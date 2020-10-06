@@ -20,7 +20,7 @@ REM BFCPEOPTIONEND
 echo.Welcome to my program, please use this responsibly.
 echo.This program Download and Converts MKV to MP4
 echo.while also trimming it for use in Wallpaper Engine
-powershell -c "Invoke-WebRequest -Uri 'http://cdn.clarkit.us/files/Programs/Wallpaper_Maker/motd.txt' -OutFile './motd.txt'"
+powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/motd.txt' -OutFile './motd.txt'"
 echo.------------------------------------------------------------------------
 echo.
 type motd.txt
