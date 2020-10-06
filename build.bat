@@ -81,7 +81,7 @@ set /p start="Enter START time (IN SECONDS): "
 set /p duration="Enter END time (IN SECONDS): "
 rem Subtract %duration% %start%
 set end=%result%
-HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%end% -e x264 -q 20.0 -r 30 —per -x264-preset fast —x264-profile baseline -O
+HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%end% -e x264 -q 20.0 -r 30 â€”per -x264-preset fast â€”x264-profile baseline -O
 cls
 echo.Video trimming has completed, please hit any key to exit
 pause
@@ -93,7 +93,7 @@ echo.     What do you want to update:
 echo.
 Echo.    [1] YoutubeDL
 Echo.    [2] HandBrake
-Echo.    [2] FFMPEG
+Echo.    [3] FFMPEG
 echo.    [4] Exit
 
 
@@ -112,7 +112,7 @@ start http://url.mon5termatt.club/handbrake
 pause
 goto:update
 :1
-youtubedl -U
+youtube-dl -U
 pause
 goto:update
 :3
