@@ -1,7 +1,7 @@
 @ECHO OFF
 REM BFCPEOPTIONSTART
 REM Advanced BAT to EXE Converter www.BatToExeConverter.com
-REM BFCPEEXE=F:\Videos\converter\Trimmer.exe
+REM BFCPEEXE=F:\Videos\converter\Downloader And Trimmer.exe
 REM BFCPEICON=F:\Videos\converter\logo0.ico
 REM BFCPEICONINDEX=-1
 REM BFCPEEMBEDDISPLAY=0
@@ -9,7 +9,7 @@ REM BFCPEEMBEDDELETE=1
 REM BFCPEADMINEXE=0
 REM BFCPEINVISEXE=0
 REM BFCPEVERINCLUDE=1
-REM BFCPEVERVERSION=1.0.0.0
+REM BFCPEVERVERSION=1.2.0.0
 REM BFCPEVERPRODUCT=Wallpaper Maker - Downloader and Trimmer
 REM BFCPEVERDESC=Downloads youtube videos and trims them.
 REM BFCPEVERCOMPANY=https://mon5termatt.club
@@ -18,9 +18,12 @@ REM BFCPEOPTIONEND
 @ECHO ON
 @echo off
 echo.Welcome to my program, please use this responsibly.
-echo.This program Download and Converts MKV to MP4
-echo.while also trimming it for use in Wallpaper Engine
-powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/motd.txt' -OutFile './motd.txt'"
+echo.
+echo.This Program Download and Converts MKV/WEBM to MP4
+echo.
+echo.While also trimming it for use in Wallpaper Engine
+echo.
+powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/v1200.txt' -OutFile './motd.txt'"
 echo.------------------------------------------------------------------------
 echo.
 type motd.txt
@@ -28,25 +31,30 @@ del motd.txt
 echo.
 echo.
 pause
+:start
 cls
 echo.            
 Echo.    [1] Download a Video From Youtube
-Echo.    [2] Convert the MKV to MP4
-Echo.        And Trim the Video
-Echo.    [3] Update and check for issues
+Echo.    [2] Convert the Video to MP4
+Echo.    [3] Convert And Trim the Video
+Echo.    [4] Update Requirements
+Echo.    [5] Exit
+echo.
+echo.
+Set /P _num=Enter Your Choice [1-5] : || Set _num=NothingChosen
+If "%_num%"=="NothingChosen" goto error
+If /i "%_num%"=="1" goto download
+If /i "%_num%"=="2" set edit=no && cls && goto trim
+If /i "%_num%"=="3" set edit=yes && cls && goto trim
+If /i "%_num%"=="4" goto update
+If /i "%_num%"=="5" exit
 
-Echo.    [4] Exit
 
-ECHO.
-choice /C:1234 /N /M ".Enter Your Choice [1,2,3,4] : "
-
-if errorlevel 4 exit
-if errorlevel 3 goto:update
-if errorlevel 2 goto:trim
-if errorlevel 1 goto:download
-
-
-
+:error
+echo.Invalid option
+timeout 3 > nul
+cls
+goto start
 
 
 
@@ -73,18 +81,27 @@ echo.
 choice /C:12 /N /M ".Enter Your Choice [1,2] : "
 if errorlevel 2 goto:trim
 if errorlevel 1 goto:download
+
+
+
+
+
 :trim
+cls
 echo.Select your file
 rem BrowseFiles
 set file=%result%
+goto %edit%
+:yes
 set /p start="Enter START time (IN SECONDS): "
 set /p duration="Enter END time (IN SECONDS): "
 rem Subtract %duration% %start%
 set end=%result%
-HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%end% -e x264 -q 20.0 -r 30 â€”per -x264-preset fast â€”x264-profile baseline -O
+:no
+HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%end% -e x264 -q 20.0 -r 30 —per -x264-preset fast —x264-profile baseline -O
 cls
-echo.Video trimming has completed, please hit any key to exit
-pause
+echo.Video Trimming has completed, Please hit any key to exit...
+pause > nul
 exit
 
 :update
@@ -122,4 +139,3 @@ echo.Step 3: Extract the bin folder to here
 start http://url.mon5termatt.club/ffmpeg
 pause
 goto:update
-
