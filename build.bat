@@ -111,7 +111,9 @@ start http://url.mon5termatt.club/handbrake
 pause
 goto:update
 :1
-youtube-dl -U
+echo.Download the latest version of Youtube DL
+echo.Then drag it into the folder and overwrite the old file 
+start http://url.mon5termatt.club/youtubedl
 pause
 goto:update
 :3
