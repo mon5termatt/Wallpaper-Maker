@@ -9,7 +9,7 @@ REM BFCPEEMBEDDELETE=1
 REM BFCPEADMINEXE=0
 REM BFCPEINVISEXE=0
 REM BFCPEVERINCLUDE=1
-REM BFCPEVERVERSION=1.2.0.0
+REM BFCPEVERVERSION=1.3.0.0
 REM BFCPEVERPRODUCT=Wallpaper Maker - Downloader and Trimmer
 REM BFCPEVERDESC=Downloads youtube videos and trims them.
 REM BFCPEVERCOMPANY=https://mon5termatt.club
@@ -17,18 +17,17 @@ REM BFCPEVERCOPYRIGHT=What?
 REM BFCPEOPTIONEND
 @ECHO ON
 @echo off
-echo.Welcome to my program, please use this responsibly.
+
+echo.Welcome to my program, please use it responsibly.
+echo.I do not support copyright infringment so be sure to
+echo.only use this program on material you own ;) 
 echo.
 echo.This Program Download and Converts MKV/WEBM to MP4
-echo.
 echo.While also trimming it for use in Wallpaper Engine
-echo.
-powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/v1200.txt' -OutFile './motd.txt'"
+powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/v1300.txt' -OutFile './motd.txt'"
 echo.------------------------------------------------------------------------
-echo.
 type motd.txt
 del motd.txt
-echo.
 echo.
 pause
 :start
@@ -48,17 +47,11 @@ If /i "%_num%"=="2" set edit=no && cls && goto trim
 If /i "%_num%"=="3" set edit=yes && cls && goto trim
 If /i "%_num%"=="4" goto update
 If /i "%_num%"=="5" exit
-
-
 :error
 echo.Invalid option
 timeout 3 > nul
 cls
 goto start
-
-
-
-
 :download
 cls
 set url=https://www.youtube.com/watch?v=dQw4w9WgXcQ
@@ -81,11 +74,6 @@ echo.
 choice /C:12 /N /M ".Enter Your Choice [1,2] : "
 if errorlevel 2 goto:trim
 if errorlevel 1 goto:download
-
-
-
-
-
 :trim
 cls
 echo.Select your file
@@ -103,7 +91,6 @@ cls
 echo.Video Trimming has completed, Please hit any key to exit...
 pause > nul
 exit
-
 :update
 cls
 echo.     What do you want to update:
@@ -112,16 +99,11 @@ Echo.    [1] YoutubeDL
 Echo.    [2] HandBrake
 Echo.    [3] FFMPEG
 echo.    [4] Exit
-
-
-
 choice /C:1234 /N /M ".Enter Your Choice [1,2,3,4] : "
-
 if errorlevel 4 exit
 if errorlevel 3 goto:3
 if errorlevel 2 goto:2
 if errorlevel 1 goto:1
-
 :2
 echo.Download the latest version of Handbrake
 echo.Then drag it into the folder and overwrite the old file 
