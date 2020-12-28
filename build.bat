@@ -9,7 +9,7 @@ REM BFCPEEMBEDDELETE=1
 REM BFCPEADMINEXE=0
 REM BFCPEINVISEXE=0
 REM BFCPEVERINCLUDE=1
-REM BFCPEVERVERSION=1.3.0.0
+REM BFCPEVERVERSION=1.4.0.0
 REM BFCPEVERPRODUCT=Wallpaper Maker - Downloader and Trimmer
 REM BFCPEVERDESC=Downloads youtube videos and trims them.
 REM BFCPEVERCOMPANY=https://mon5termatt.club
@@ -24,7 +24,7 @@ echo.only use this program on material you own ;)
 echo.
 echo.This Program Download and Converts MKV/WEBM to MP4
 echo.While also trimming it for use in Wallpaper Engine
-powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/v1300.txt' -OutFile './motd.txt'"
+powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/v1400.txt' -OutFile './motd.txt'"
 echo.------------------------------------------------------------------------
 type motd.txt
 del motd.txt
@@ -81,12 +81,37 @@ rem BrowseFiles
 set file=%result%
 goto %edit%
 :yes
-set /p start="Enter START time (IN SECONDS): "
-set /p duration="Enter END time (IN SECONDS): "
-rem Subtract %duration% %start%
+echo.Enter Start Time: 
+set /p hr="Hours: "
+set /p mn="Minutes: "
+set /p sc="Seconds: "
+rem Multiply %hr% 3600
+set ct1=%result%
+rem Multiply %mn 60 
+set ct2=%result%
+rem Add %ct1% %ct2%
+set ct3=%result%
+rem Add %ct3% %sc%
+set start=%result%
+set result=
+echo.Enter End Time: 
+set /p hr="Hours: "
+set /p mn="Minutes: "
+set /p sc="Seconds: "
+rem Multiply %hr% 3600
+set ct1=%result%
+rem Multiply %mn 60 
+set ct2=%result%
+rem Add %ct1% %ct2%
+set ct3=%result%
+rem Add %ct3% %sc%
 set end=%result%
+set result=
+rem Subtract %end% %start%
+set duration=%result%
+cls
 :no
-HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%end% -e x264 -q 20.0 -r 30 —per -x264-preset fast —x264-profile baseline -O
+HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%duration% -e x264 -q 20.0 -r 30 —per -x264-preset fast —x264-profile baseline -O
 cls
 echo.Video Trimming has completed, Please hit any key to exit...
 pause > nul
