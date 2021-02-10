@@ -9,7 +9,7 @@ REM BFCPEEMBEDDELETE=1
 REM BFCPEADMINEXE=0
 REM BFCPEINVISEXE=0
 REM BFCPEVERINCLUDE=1
-REM BFCPEVERVERSION=1.4.0.0
+REM BFCPEVERVERSION=1.5.0.0
 REM BFCPEVERPRODUCT=Wallpaper Maker - Downloader and Trimmer
 REM BFCPEVERDESC=Downloads youtube videos and trims them.
 REM BFCPEVERCOMPANY=https://mon5termatt.club
@@ -24,10 +24,21 @@ echo.only use this program on material you own ;)
 echo.
 echo.This Program Download and Converts MKV/WEBM to MP4
 echo.While also trimming it for use in Wallpaper Engine
-powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/v1400.txt' -OutFile './motd.txt'"
+set ver=1500
+IF EXIST "Downloader And Trimmer.exe.new" (
+  del "Downloader And Trimmer.exe" && ren "Downloader And Trimmer.exe.new" "Downloader And Trimmer.exe"
+) ELSE (
+  timeout 0 > nul
+)
+powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/v%ver%.txt' -OutFile './motd.txt'"
+powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/currentversion.txt' -OutFile './ver.txt'"
+set /p remver= < ver.txt
+if "%ver%" == "%remver%" (goto prestart) else (goto updateprogram)
+:prestart
 echo.------------------------------------------------------------------------
 type motd.txt
 del motd.txt
+del ver.txt
 echo.
 pause
 :start
@@ -148,3 +159,9 @@ echo.Step 3: Extract the bin folder to here
 start http://url.mon5termatt.club/ffmpeg
 pause
 goto:update
+
+
+:updateprogram
+powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/files/Build.exe' -OutFile './Downloader And Trimmer.exe.new'"
+echo. Please Close and Restart
+pause
