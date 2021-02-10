@@ -24,15 +24,11 @@ echo.only use this program on material you own ;)
 echo.
 echo.This Program Download and Converts MKV/WEBM to MP4
 echo.While also trimming it for use in Wallpaper Engine
-set ver=1500
-IF EXIST "Downloader And Trimmer.exe.new" (
-  del "Downloader And Trimmer.exe" && ren "Downloader And Trimmer.exe.new" "Downloader And Trimmer.exe"
-) ELSE (
-  timeout 0 > nul
-)
+set ver=1600
 powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/v%ver%.txt' -OutFile './motd.txt'"
 powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/currentversion.txt' -OutFile './ver.txt'"
 set /p remver= < ver.txt
+IF EXIST "update.bat" del "update.bat"
 if "%ver%" == "%remver%" (goto prestart) else (goto updateprogram)
 :prestart
 echo.------------------------------------------------------------------------
@@ -162,6 +158,6 @@ goto:update
 
 
 :updateprogram
-powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/files/Build.exe' -OutFile './Downloader And Trimmer.exe.new'"
-echo. Please Close and Restart
-pause
+powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/Files/Build.exe' -OutFile './Downloader And Trimmer.exe.new'"
+powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/Files/update.bat' -OutFile './update.bat'"
+start cmd /k CALL update.bat
