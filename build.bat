@@ -9,7 +9,7 @@ REM BFCPEEMBEDDELETE=1
 REM BFCPEADMINEXE=0
 REM BFCPEINVISEXE=0
 REM BFCPEVERINCLUDE=1
-REM BFCPEVERVERSION=1.5.0.0
+REM BFCPEVERVERSION=1.9.0.0
 REM BFCPEVERPRODUCT=Wallpaper Maker - Downloader and Trimmer
 REM BFCPEVERDESC=Downloads youtube videos and trims them.
 REM BFCPEVERCOMPANY=https://mon5termatt.club
@@ -24,7 +24,7 @@ echo.only use this program on material you own ;)
 echo.
 echo.This Program Download and Converts MKV/WEBM to MP4
 echo.While also trimming it for use in Wallpaper Engine
-set ver=1600
+set ver=1900
 powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/v%ver%.txt' -OutFile './motd.txt'"
 powershell -c "Invoke-WebRequest -Uri 'http://cdn.mon5termatt.club/files/Programs/Wallpaper_Maker/currentversion.txt' -OutFile './ver.txt'"
 set /p remver= < ver.txt
@@ -118,7 +118,7 @@ rem Subtract %end% %start%
 set duration=%result%
 cls
 :no
-HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%duration% -e x264 -q 20.0 -r 30 —per -x264-preset fast —x264-profile baseline -O
+HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%duration% -e x264 -q 20.0 -r 30 â€”per -x264-preset fast â€”x264-profile baseline -O
 cls
 echo.Video Trimming has completed, Please hit any key to exit...
 pause > nul
