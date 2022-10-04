@@ -3,7 +3,7 @@
 # prerequisites
 ### FFMPEG (ffmpeg.exe only)
 http://url.mon5termatt.club/ffmpeg
-### HandBrake (cli version)
+### HandBrake (cli version) (1.5.1
 http://url.mon5termatt.club/handbrake
 ### YoutubeDL (windows exe)
 http://url.mon5termatt.club/youtubedl
