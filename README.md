@@ -9,15 +9,14 @@
 
 # prerequisites
 ### FFMPEG (ffmpeg.exe only)
-http://url.mon5termatt.club/ffmpeg
+https://github.com/GyanD/codexffmpeg/releases
 ### HandBrake (cli version) (1.5.1)
-http://url.mon5termatt.club/handbrake
+https://handbrake.fr/downloads2.php
 ### YoutubeDL (windows exe)
-http://url.mon5termatt.club/youtubedl
+https://github.com/yt-dlp/yt-dlp
 #### last Updated 2022.09.01
 ### Microsoft Visual C++ 2010 Redistributable Package
-http://url.mon5termatt.club/4iny7
-
+https://www.majorgeeks.com/files/details/microsoft_visual_c_2010_redistributable.html
 
 # the folder should look like this
 ![Screenshot](https://cdn.mon5termatt.club/files/explorer_Qf8TBT8lA2.png)
