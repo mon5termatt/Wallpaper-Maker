@@ -14,7 +14,6 @@ https://github.com/GyanD/codexffmpeg/releases
 https://handbrake.fr/downloads2.php
 ### YoutubeDL (windows exe)
 https://github.com/yt-dlp/yt-dlp
-#### last Updated 2022.09.01
 ### Microsoft Visual C++ 2010 Redistributable Package
 https://www.majorgeeks.com/files/details/microsoft_visual_c_2010_redistributable.html
 
