@@ -16,3 +16,5 @@ https://handbrake.fr/downloads2.php
 https://github.com/yt-dlp/yt-dlp/releases
 ### Microsoft Visual C++ 2010 Redistributable Package
 https://www.majorgeeks.com/files/details/microsoft_visual_c_2010_redistributable.html
+
+Make Sure all the EXE files are in the same directory. Any modifications are not my fault if you break it.
