@@ -35,7 +35,7 @@ echo.If using a playlist but you only want THAT video
 echo.Use --no-playlist as the modifier
 set /p mod="Paste Optional Modifiers: "
 cls
-youtube-dl %url% %mod% --no-progress --ignore-config
+yt-dlp %url% %mod% --no-progress --ignore-config
 :: Clear URLS
 set "url="
 set "mod="
