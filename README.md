@@ -12,10 +12,7 @@
 https://github.com/GyanD/codexffmpeg/releases
 ### HandBrake (cli version) (1.5.1)
 https://handbrake.fr/downloads2.php
-### YoutubeDL (windows exe)
-https://github.com/yt-dlp/yt-dlp
+### YoutubeDLP (windows exe) (yt-dlp.exe)
+https://github.com/yt-dlp/yt-dlp/releases
 ### Microsoft Visual C++ 2010 Redistributable Package
 https://www.majorgeeks.com/files/details/microsoft_visual_c_2010_redistributable.html
-
-# the folder should look like this
-![Screenshot](https://cdn.mon5termatt.club/files/explorer_Qf8TBT8lA2.png)
