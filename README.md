@@ -8,9 +8,12 @@
 # Wallpaper-Maker
 
 # prerequisites
+
+### .bat from this repo
+
 ### FFMPEG (ffmpeg.exe only)
 https://github.com/GyanD/codexffmpeg/releases
-### HandBrake (cli version) (1.5.1)
+### HandBrake (cli version)
 https://handbrake.fr/downloads2.php
 ### YoutubeDLP (windows exe) (yt-dlp.exe)
 https://github.com/yt-dlp/yt-dlp/releases
