@@ -16,7 +16,7 @@ Echo.    [3] Convert And Trim the Video
 Echo.    [4] Exit
 echo.
 echo.
-Set /P _num=Enter Your Choice [1-5] : || Set _num=NothingChosen
+Set /P _num=Enter Your Choice [1-4] : || Set _num=NothingChosen
 If "%_num%"=="NothingChosen" goto error
 If /i "%_num%"=="1" goto download
 If /i "%_num%"=="2" set edit=no && cls && goto trim
@@ -60,41 +60,47 @@ set dialog=%dialog%close();resizeTo(0,0);</script>"
 for /f "tokens=* delims=" %%p in ('mshta.exe %dialog%') do set "file=%%p"
 goto %edit%
 :yes
+
+set 3600=3600
+set 60=60
+
 echo.Enter Start Time: 
 set /p hr="Hours: "
 set /p mn="Minutes: "
 set /p sc="Seconds: "
-set /a ct1="%hr%*3600"
-set /a ct2="%mn%*60"
+set /a ct1="%hr%*%3600%"
+set /a ct2="%mn%*%60%"
 set /a "ct3=%ct1%+%ct2%"
 set /a "start=%ct3%+%sc%"
 
-::clear variables
-set ct1=
-set ct2=
-set ct3=
-set sc=
-set hr=
-set mn=
+
 
 echo.Enter End Time: 
 set /p hr="Hours: "
 set /p mn="Minutes: "
 set /p sc="Seconds: "
-set /a ct1="%hr%*3600"
-set /a ct2="%mn%*60"
-set /a "ct3=%ct1%+=%ct2%"
-set /a "start=%ct3%+=%sc%"
+set /a ct1="%hr%*%3600%"
+set /a ct2="%mn%*%60%"
+set /a "ct3=%ct1%+%ct2%"
+set /a "end=%ct3%+%sc%"
 
 
 
-set /a "duration=%end%-=%start%"
+set /a "duration=%end%-%start%"
 
 
 
 cls
 :no
-HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%duration% -e x264 -q 20.0 -r 30 —per -x264-preset fast —x264-profile baseline -O
+
+echo.File: %file%
+echo.Start Time: %start%
+echo.End Time: %end%
+echo.Duration: %duration%
+timeout 2 > nul
+
+
+HandBrakeCLI.exe -i "%file%" -o "%file%_trim.mp4" --start-at duration:%start% --stop-at duration:%duration% -e x264 -q 20.0 -r 30 —per -x264-preset fast —x264-profile baseline -O
 cls
 echo.Video Trimming has completed, Please hit any key to exit...
 pause > nul
