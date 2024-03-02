@@ -65,9 +65,9 @@ set 3600=3600
 set 60=60
 
 echo.Enter Start Time: 
-set /p hr="Hours: "
-set /p mn="Minutes: "
-set /p sc="Seconds: "
+set /p hr="Hours: " || Set hr=0
+set /p mn="Minutes: " || Set mn=0
+set /p sc="Seconds: " || set sc=0
 set /a ct1="%hr%*%3600%"
 set /a ct2="%mn%*%60%"
 set /a "ct3=%ct1%+%ct2%"
@@ -76,9 +76,9 @@ set /a "start=%ct3%+%sc%"
 
 
 echo.Enter End Time: 
-set /p hr="Hours: "
-set /p mn="Minutes: "
-set /p sc="Seconds: "
+set /p hr="Hours: " || Set hr=0
+set /p mn="Minutes: " || Set mn=0
+set /p sc="Seconds: " || set sc=0
 set /a ct1="%hr%*%3600%"
 set /a ct2="%mn%*%60%"
 set /a "ct3=%ct1%+%ct2%"
