@@ -1,7 +1,4 @@
-# project is broken until this weekend when I get a chance to update it
-
-
-### Im no longer actively updating this code.
+## Im no longer actively updating this code.
 > if there are issues please reach out to me using any of the contact methods over at https://mon5termatt.com
 
 
