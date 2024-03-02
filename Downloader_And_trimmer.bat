@@ -51,38 +51,46 @@ if errorlevel 1 goto:download
 :trim
 cls
 echo.Select your file
-rem BrowseFiles
-set file=%result%
+
+set dialog="about:<input type=file id=FILE><script>FILE.click();new ActiveXObject
+set dialog=%dialog%('Scripting.FileSystemObject').GetStandardStream(1).WriteLine(FILE.value);
+set dialog=%dialog%close();resizeTo(0,0);</script>"
+
+for /f "tokens=* delims=" %%p in ('mshta.exe %dialog%') do set "file=%%p"
 goto %edit%
 :yes
 echo.Enter Start Time: 
 set /p hr="Hours: "
 set /p mn="Minutes: "
 set /p sc="Seconds: "
-rem Multiply %hr% 3600
-set ct1=%result%
-rem Multiply %mn 60 
-set ct2=%result%
-rem Add %ct1% %ct2%
-set ct3=%result%
-rem Add %ct3% %sc%
-set start=%result%
-set result=
+set /a ct1="%hr%*3600"
+set /a ct2="%mn%*60"
+set /a "ct3=%ct1%+%ct2%"
+set /a "start=%ct3%+%sc%"
+
+::clear variables
+set ct1=
+set ct2=
+set ct3=
+set sc=
+set hr=
+set mn=
+
 echo.Enter End Time: 
 set /p hr="Hours: "
 set /p mn="Minutes: "
 set /p sc="Seconds: "
-rem Multiply %hr% 3600
-set ct1=%result%
-rem Multiply %mn 60 
-set ct2=%result%
-rem Add %ct1% %ct2%
-set ct3=%result%
-rem Add %ct3% %sc%
-set end=%result%
-set result=
-rem Subtract %end% %start%
-set duration=%result%
+set /a ct1="%hr%*3600"
+set /a ct2="%mn%*60"
+set /a "ct3=%ct1%+=%ct2%"
+set /a "start=%ct3%+=%sc%"
+
+
+
+set /a "duration=%end%-=%start%"
+
+
+
 cls
 :no
 HandBrakeCLI.exe -i %file% -o %file%_trim.mp4 --start-at duration:%start% --stop-at duration:%duration% -e x264 -q 20.0 -r 30 —per -x264-preset fast —x264-profile baseline -O
