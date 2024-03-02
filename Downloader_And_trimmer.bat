@@ -1,3 +1,4 @@
+@echo off
 echo.Welcome to my program, please use it responsibly.
 echo.I do not support copyright infringment so be sure to
 echo.only use this program on material you own ;) 
